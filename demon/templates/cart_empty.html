@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empty Cart</title>
+</head>
+<body>
+    <h1>Your Cart is Empty</h1>
+    <p>Your shopping cart is currently empty. <a href="{{ url_for('shop') }}">Start shopping</a> to add items to your cart.</p>
+    <form action="{{ url_for('checkout') }}" method="POST">
+        <button type="submit">Checkout</button>
+    </form>
+</body>
+</html>

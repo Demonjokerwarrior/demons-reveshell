@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Product</title>
+</head>
+<body>
+    <h1>Add Product</h1>
+    <form action="{{ url_for('add_product') }}" method="POST" enctype="multipart/form-data">
+        <label for="product_name">Product Name:</label><br>
+        <input type="text" id="product_name" name="product_name"><br><br>
+        <label for="product_price">Product Price:</label><br>
+        <input type="text" id="product_price" name="product_price"><br><br>
+        <label for="file">Select Image:</label><br>
+        <input type="file" id="file" name="file"><br><br>
+        <button type="submit">Add Product</button>
+    </form>
+</body>
+</html>

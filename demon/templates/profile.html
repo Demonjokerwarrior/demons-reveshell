@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #f2a154;
+            color: #000000; /* Changed text color to black */
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            margin-top: 50px;
+            color: #f2a154;
+        }
+        p {
+            color: #333;
+        }
+        a {
+            color: #f2a154;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>User Profile</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <h1>Welcome, {{ account.username }}</h1>
+    <p>Email: {{ account.email }}</p>
+    <p>Address: {{ account.address }}</p>
+    <p>Phone Number: {{ account.phone_number }}</p>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

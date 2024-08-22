@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #f2a154;
+            color: #000000; /* Changed text color to black */
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        h1 {
+            margin-top: 50px;
+            color: #f2a154;
+        }
+        p {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #f2a154;
+            color: #fff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e29350;
+        }
+        .image-container {
+            width: 100px; /* Set the width of the image container */
+            height: 100px; /* Set the height of the image container */
+            margin-right: 20px; /* Add some spacing between the image and the text */
+            overflow: hidden; /* Hide any overflow from the image */
+            display: inline-block; /* Make the container inline-block to allow for inline positioning */
+        }
+        .image-container img {
+            width: 100%; /* Make the image fill the container */
+            height: 100%; /* Make the image fill the container */
+            object-fit: cover; /* Cover the container with the image */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lupskart</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <h1>Cart</h1>
+    <ul>
+        {% for product in products %}
+        <li>
+            <div class="image-container">
+                <img src="{{ product.image_url }}" alt="{{ product.product_name }}">
+            </div>
+            {{ product['product_name'] }} - Quantity: {{ product['quantity'] }} - Price: ${{ product['product_price'] }}
+            <form action="{{ url_for('remove_from_cart', product_id=product['product_id']) }}" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Remove</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <p>Total Price: ${{ total_price }}</p>
+    <a href="{{ url_for('checkout') }}">Checkout</a>
+</body>
+</html>

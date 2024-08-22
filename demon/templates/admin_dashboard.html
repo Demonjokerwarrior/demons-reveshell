@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    {% for order in orders %}
+        <h2>Order ID: {{ order.order_id }} | User ID: {{ order.user_id }}</h2>
+        <p>Address: {{ order.user_address }}</p>
+        <p>Phone Number: {{ order.user_phone_number }}</p>
+        <ul>
+            {% for item in order.detailed_order %}
+                <li>{{ item.product_name }}: {{ item.quantity }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>
