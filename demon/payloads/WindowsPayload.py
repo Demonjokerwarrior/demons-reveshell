@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-A full fledged Shadow Shark payload for Windows.
 
-@author: Mr. Shark Spam Bot
-"""
 
 import socket
 import subprocess
